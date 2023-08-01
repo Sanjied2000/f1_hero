@@ -1,0 +1,149 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://more fonts/KiriFont.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://START PAGE.gd" type="Script" id=2]
+[ext_resource path="res://Hero/cars.png" type="Texture" id=3]
+[ext_resource path="res://Hero/formula1-1 (1).png" type="Texture" id=4]
+[ext_resource path="res://Hero/formula2-3.png" type="Texture" id=5]
+[ext_resource path="res://Hero/formula1-5.png" type="Texture" id=6]
+[ext_resource path="res://UI/arrow-UP.png" type="Texture" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 29
+outline_size = 2
+outline_color = Color( 0.905882, 0.223529, 0.223529, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+outline_size = 2
+outline_color = Color( 0.984314, 0.968627, 0.0509804, 1 )
+font_data = ExtResource( 1 )
+
+[node name="START PAGE" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 1.41418
+margin_right = 265.414
+margin_bottom = 599.0
+color = Color( 0.286275, 0.356863, 0.513726, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 130.701, 205.375 )
+scale = Vector2( 0.521406, 0.668867 )
+texture = ExtResource( 3 )
+
+[node name="Button" type="Button" parent="."]
+margin_left = 64.6541
+margin_top = 273.795
+margin_right = 207.654
+margin_bottom = 346.795
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.976471, 0.913725, 0.152941, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0.384314, 0.913725, 0.0980392, 1 )
+text = "START"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 12.0
+margin_top = 395.0
+margin_right = 54.0
+margin_bottom = 473.0
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect4" type="TextureRect" parent="."]
+margin_left = 104.0
+margin_top = 464.398
+margin_right = 128.0
+margin_bottom = 488.398
+rect_rotation = -90.0
+texture = ExtResource( 7 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect5" type="TextureRect" parent="."]
+margin_left = 175.276
+margin_top = 439.704
+margin_right = 199.276
+margin_bottom = 463.704
+rect_rotation = 90.0
+texture = ExtResource( 7 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+margin_left = 16.466
+margin_top = 485.496
+margin_right = 57.466
+margin_bottom = 564.496
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+margin_left = 193.869
+margin_top = 489.048
+margin_right = 231.869
+margin_bottom = 563.048
+texture = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 63.2223
+margin_top = 427.99
+margin_right = 177.222
+margin_bottom = 441.99
+text = "MOVE LEFT RIGHT"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 66.9543
+margin_top = 519.031
+margin_right = 119.954
+margin_bottom = 533.031
+text = "AVOID TO PREVENT"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 90.3239
+margin_top = 146.131
+margin_right = 252.324
+margin_bottom = 179.131
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.145098, 0.364706, 0.87451, 1 )
+text = "F1 HERO"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

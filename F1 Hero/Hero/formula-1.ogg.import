@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/formula-1.ogg-bd73d4469c34beb08da79bc6f43fbdfe.oggstr"
+
+[deps]
+
+source_file="res://Hero/formula-1.ogg"
+dest_files=[ "res://.import/formula-1.ogg-bd73d4469c34beb08da79bc6f43fbdfe.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,141 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://BlueF1.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Hero/road.png" type="Texture" id=2]
+[ext_resource path="res://enemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Level1.gd" type="Script" id=4]
+[ext_resource path="res://Hero/formula-1.ogg" type="AudioStream" id=5]
+[ext_resource path="res://redcar.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Hero/tile1.png" type="Texture" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 132.804, 10.8598 )
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+points = PoolVector2Array( 7.94505, 7.94506, 0.206249, 8, 0, 0.0940933, 8, 0.0940933 )
+
+[sub_resource type="TileSet" id=3]
+0/name = "tile1.png 0"
+0/texture = ExtResource( 7 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 8, 8 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 2 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+
+[node name="Level1" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Road" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 132.303, 301.51 )
+scale = Vector2( 1.0357, 1.00353 )
+texture = ExtResource( 2 )
+
+[node name="Heros_CAR" parent="." instance=ExtResource( 1 )]
+position = Vector2( 125.224, 494.521 )
+collision_layer = 4
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 133.263, 764.543 )
+collision_layer = 4
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 1 )
+
+[node name="Area2D2" type="Area2D" parent="."]
+position = Vector2( 133.263, 940.543 )
+collision_layer = 16
+collision_mask = 8
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+shape = SubResource( 1 )
+
+[node name="red car" type="Node" parent="."]
+
+[node name="enemy" parent="." instance=ExtResource( 3 )]
+position = Vector2( 49.9359, -140.529 )
+collision_mask = 0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -10.097
+autoplay = true
+
+[node name="redcar" parent="." instance=ExtResource( 6 )]
+position = Vector2( 190.547, -289.183 )
+collision_layer = 8
+
+[node name="pointsbar" type="Area2D" parent="."]
+position = Vector2( 130.74, 614.275 )
+collision_layer = 2
+collision_mask = 9
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pointsbar"]
+shape = SubResource( 1 )
+one_way_collision = true
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource( 3 )
+collision_layer = 2
+collision_mask = 4
+format = 1
+tile_data = PoolIntArray( 0, 536870912, 0, 4, 0, 0, 65536, 536870912, 0, 65540, 0, 0, 131072, 536870912, 0, 131076, 0, 0, 196608, 536870912, 0, 196612, 0, 0, 262144, 536870912, 0, 262148, 0, 0, 327680, 536870912, 0, 327684, 0, 0, 393216, 536870912, 0, 393220, 0, 0, 458752, 536870912, 0, 458756, 0, 0, 524288, 536870912, 0, 524292, 0, 0, 589824, 536870912, 0, 589828, 0, 0 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+margin_left = 9.0
+margin_top = 1.0
+margin_right = 53.0
+margin_bottom = 17.0
+custom_colors/font_color = Color( 0.0117647, 0.0862745, 0.188235, 1 )
+text = "Points:"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pointshow" type="Label" parent="CanvasLayer"]
+margin_left = 48.2862
+margin_top = 1.00001
+margin_right = 100.286
+margin_bottom = 17.0
+custom_colors/font_color = Color( 0.0117647, 0.0862745, 0.188235, 1 )
+text = "xx"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="Area2D2" to="." method="_on_Area2D2_body_entered"]
+[connection signal="body_entered" from="pointsbar" to="." method="_on_pointsbar_body_entered"]
